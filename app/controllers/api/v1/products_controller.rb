@@ -1,4 +1,5 @@
 class Api::V1::ProductsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   protect_from_forgery with: :null_session
 
   def index
@@ -23,5 +24,5 @@ class Api::V1::ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :price)
   end
-  
+
 end
